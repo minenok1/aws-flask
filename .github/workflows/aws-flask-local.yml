@@ -22,18 +22,18 @@ jobs:
     steps:
       - name: Print NAME + VER
         run:
-          echo "PackNAME:${{ env.PACKAGE_NAME }}"
+          echo "PackNAME:${{ env.PACKAGE_NAME }}" &&
           echo "Github package version:${{ env.PACKAGE_VERSION }}"
           
       - name: Check software versions
         run:
-          python3 -V
-          aws --version
+          python3 -V &&
+          aws --version &&
           pip -V
           
       - name: Install Flask
         run: 
-          pip install Flask
+          pip install Flask &&
           flask --version
           
       - name: Clone repo to the container (OS)
@@ -41,7 +41,7 @@ jobs:
         
       - name: Current location
         run: 
-           pwd
+           pwd &&
            ls -lah
         
       #- name: Run Flask-WEB-server
