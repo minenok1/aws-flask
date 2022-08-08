@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_and_run:
     runs-on: ubuntu-latest
     
     steps:
@@ -44,11 +44,11 @@ jobs:
            pwd &&
            ls -lah
         
-      #- name: Run Flask-WEB-server
-        #run:
-          #python3 application.py 2>&1 &
+      - name: Run Flask-WEB-server
+        run:
+          python3 application.py 2>&1 &
           
-      #- name: Check accessibility
-        #run:
-         #netstat -tunlp |grep 5000
-         #curl http://127.0.0.1:5000/main
+      - name: Check accessibility
+        run:
+         netstat -tunlp |grep 5000 &&
+         curl http://127.0.0.1:5000/main
